@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Frame Randomizer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #0f0f0f;
+      color: white;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    #drop-zone, #url-section {
+      border: 3px dashed #666;
+      padding: 30px;
+      margin: 20px auto;
+      border-radius: 12px;
+    }
+    input[type="text"] {
+      width: 80%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+    }
+    #frames {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin: 30px 0;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .frame {
+      border: 2px solid #444;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+    .frame img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+    }
+    .frame p {
+      padding: 8px;
+      margin: 0;
+      background: #222;
+      font-size: 13px;
+    }
+    button {
+      padding: 12px 24px;
+      margin: 10px;
+      font-size: 16px;
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover { background: #ff3333; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎥 Video Frame Randomizer</h1>
+    <p>Upload a video or paste URL → Get 6 random screenshots</p>
+
+    <div id="drop-zone">
+      <h2>Drop Video File Here or Click to Upload</h2>
+      <input type="file" id="video-upload" accept="video/*" style="display:none;">
+    </div>
+
+    <div id="url-section">
+      <h2>Or Paste Video URL</h2>
+      <input type="text" id="video-url" placeholder="https://...">
+      <br><br>
+      <button id="load-url-btn">Load Video from URL</button>
+    </div>
+
+    <video id="video" style="display:none;"></video>
+    <canvas id="canvas" style="display:none;"></canvas>
+
+    <div id="status"></div>
+    <button id="generate-btn" style="display:none;">Generate Random Frames</button>
+
+    <div id="frames"></div>
+    <button id="download-btn" style="display:none;">Download Premium Collage</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
